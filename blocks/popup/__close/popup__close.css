@@ -1,0 +1,15 @@
+.popup__close{
+    width: 40.7px;
+    height: 40.7px;
+    position: absolute;
+    left: 100%;
+    top: -40.7px;
+    transition: opacity .3s;
+}
+.popup__close:hover{
+    opacity: .6;
+}
+@media screen and (max-width: 540px){
+    .popup__close{
+        left: calc(100% - 40.7px);
+    }}

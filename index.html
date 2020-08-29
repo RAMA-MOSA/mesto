@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Svetlana Savitskaya">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto Russia</title>
+</head>
+
+<body class="root">
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="./images/logo.svg" alt="Логотип">
+            <div class="header__line"></div>
+        </header>
+        <main class="content">
+            <section class="profile">
+                <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+                <div class="profile__info">
+                    <div class="profile__box">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button class="profile__edit">
+                            <img class="profile__edit_vector" src="./images/edit.svg" alt="Изменить">
+                        </button>
+                    </div>
+                    <p class="profile__description">Исследователь океана</p>
+                </div>
+                <button class="profile__button">
+                    <img class="profile__button_vector" src="./images/+.svg" alt="Добавить фото">
+                </button>
+            </section>
+            <ul class="elements">
+                <li class="element">
+                    <img class="element__photo" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото">
+                    <div class="element__box">
+                        <p class="element__caption">Карачаевск</p>
+                        <img class="element__like" src="./images/like.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__photo" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Фото">
+                    <div class="element__box">
+                        <p class="element__caption">Гора Эльбрус</p>
+                        <img class="element__like" src="./images/like.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__photo" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Фото">
+                    <div class="element__box">
+                        <p class="element__caption">Домбай</p>
+                        <img class="element__like" src="./images/like.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__photo" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Фото">
+                    <div class="element__box">
+                        <p class="element__caption">Гора Эльбрус</p>
+                        <img class="element__like" src="./images/like.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__photo" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Фото">
+                    <div class="element__box">
+                        <p class="element__caption">Домбай</p>
+                        <img class="element__like" src="./images/like.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__photo" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото">
+                    <div class="element__box">
+                        <p class="element__caption">Карачаево-Черкесия</p>
+                        <img class="element__like" src="./images/like.svg" alt="Лайк">
+                    </div>
+                </li>
+            </ul>
+            <section class="footer">
+                <p class="footer__text">© 2020 Mesto Russia</p>
+            </section>
+            <section class="popup">
+                <div class="popup__container">
+                    <p class="popup__title">Редактировать профиль</p>
+                    <form class="popup__form">
+                      <fieldset class="popup__content">
+                        <label class="popup__name">
+                            <input class="popup__item popup__item_name" name="name" type="text" placeholder="Имя" autocomplete="off">
+                        </label>
+                        <label class="popup__description">
+                            <input class="popup__item popup__item_description" name="description" type="text" placeholder="О себе" autocomplete="off">
+                        </label>
+                        <button class="popup__button" type="submit">Сохранить</button>
+                      </fieldset>
+                    </form>
+                    <img class="popup__close" src="./images/CloseIcon.svg" alt="Закрыть">
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="./script/index.js"></script>
+</body>
+</html>

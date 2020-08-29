@@ -1,0 +1,8 @@
+.profile__box{
+    margin-bottom: 16px;
+    display: flex;
+}
+@media screen and (max-width:619px){
+    .profile__box {
+        margin-bottom: 14px;
+    }}
