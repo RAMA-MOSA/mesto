@@ -9,4 +9,4 @@
 ### Планы по доработке проекта:
 * Добавить форму обратной связи 
 ### Ссылка на проект: 
-https://rama-mosa.github.io/russian-travel/
+https://rama-mosa.github.io/mesto/
