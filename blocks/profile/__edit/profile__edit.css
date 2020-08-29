@@ -1,6 +1,5 @@
 .profile__edit{
     margin-left: 17px;
-    margin-top: 19px;
     width: 24px;
     height: 24px;
     border: 1px solid #fff;
@@ -14,7 +13,6 @@
     .profile__edit {
         width: 18px;
         height: 18px;
-        margin-top: 20px;
         margin-left: 1px;
         display: flex;
     }}
