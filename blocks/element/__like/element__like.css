@@ -2,7 +2,7 @@
     background: transparent;
     background-image: url(../../../images/like.svg);
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     border: none;
     width: 20.76px;
