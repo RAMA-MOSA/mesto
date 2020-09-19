@@ -1,0 +1,4 @@
+.element__like_on{
+    background-image: url(../../../../images/like_on.svg);
+    z-index: 2;
+}

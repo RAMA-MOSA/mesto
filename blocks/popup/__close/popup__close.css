@@ -17,5 +17,7 @@
 }
 @media screen and (max-width: 540px){
     .popup__close{
-        left: calc(100% - 40.7px);
+        width: 30px;
+        height: 30px;
+        top: -30px;
     }}

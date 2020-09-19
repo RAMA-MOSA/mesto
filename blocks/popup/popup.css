@@ -5,7 +5,11 @@
     left:0;  
     min-width:100%;
     min-height:100%;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition-property: visibility, opacity;
+    transition: linear .3s;
 }
