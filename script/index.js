@@ -26,6 +26,7 @@ const initialCards = [
 ];
 
 
+
 let profileEdit = document.querySelector('.profile__edit');
 let profileButton = document.querySelector('.profile__button');
 let popup = document.querySelector('.popup');
@@ -44,15 +45,11 @@ const popupNewcard = document.querySelector('.popup-newcard');
 const popupImage = document.querySelector('.popup-image');
 const popupCloseNewcard = document.querySelector('.popup__close_newcard');
 const elementPhoto = document.querySelector('.element__photo');
+const elementCaption = document.querySelector('.element__caption');
 const popupCloseImage = document.querySelector('.popup__close_image');
 const trash = document.querySelector('.element__trash');
 const elementTemplate = document.querySelector('#element').content;
 const allElements = document.querySelector('.elements__box');
-
-
-
-
-
 
 
 
@@ -69,33 +66,43 @@ function formSubmitHandler(evt){
     profileDescription.textContent = popupItemDescription.value;
     closePopup();
 }
-//ЗАКРЫТЬТ РЕДАКТОР ПРОФИЛЯ
+//ЗАКРЫТЬ РЕДАКТОР ПРОФИЛЯ
 function closePopup(){
     popup.classList.remove('popup_opened');
 }
-//ОТКРЫТЬ ФОРМУ НОВОЙ КАРТОЧКИ
+//ОТКРЫТЬ ФОРМУ СОЗДАНИЯ НОВОЙ КАРТОЧКИ
 function openPopupNewcard(){
     popupNewcard.classList.add('popup_opened');
     popupItemNameElement.value = '';
     popupItemLinkElement.value = '';
     popupNewcardForm.addEventListener('submit', newcardSubmitHandler);
 }
-//СОЗДАНИЕ НОВОЙ КАРТОЧКИ
+//ДОБАВИТЬ НОВУЮ КАРТОЧКУ В МАССИВ, ЗАКРЫТЬ ФОРМУ И ОПУБЛИКОВАТЬ ОБНОВЛЕННЫЙ МАССИВ
 function newcardSubmitHandler(evt){
     evt.preventDefault();
+    const box = {name: popupItemNameElement.value, link: popupItemLinkElement.value};
+    initialCards.unshift(box);
+    popupNewcard.classList.remove('popup_opened');
+    initialCards.splice(1);
+    templateBox();
+}
+//ЗАКРЫТЬ ФОРМУ СОЗДАНИЯ НОВОЙ КАРТОЧКИ
+function closePopupNewcard(){
+    popupNewcardForm.removeEventListener('submit', newcardSubmitHandler);
+    popupNewcard.classList.remove('popup_opened');
+}
+//СОЗДАТЬ ИЗ МАССИВА КАРТОЧКИ, ДОБАВИТЬ СЛУШАТЕЛИ, ОПРЕДЕЛИТЬ ПОЛОЖЕНИЕ
+function templateBox(){
+  initialCards.forEach(function(item){
     const newElement = elementTemplate.cloneNode(true);
-    elementTemplate.querySelector('.element__photo').src = popupItemLinkElement.value;
-    elementTemplate.querySelector('.element__caption').textContent = popupItemNameElement.value;
-    elementTemplate.querySelector('.element__photo').alt = popupItemNameElement.value;
+    newElement.querySelector('.element__photo').src = item.link;
+    newElement.querySelector('.element__photo').alt = item.name;
+    newElement.querySelector('.element__caption').textContent = item.name;        
     likeElement(newElement);
     deleteElement(newElement);
     openElement(newElement);
     allElements.prepend(newElement);
-    closePopupNewcard();
-}
-//ЗАКРЫТЬ ФОРМУ НОВОЙ КАРТОЧКИ
-function closePopupNewcard(){
-    popupNewcard.classList.remove('popup_opened');
+})
 }
 //ЛАЙКНУТЬ
 function likeElement(val){
@@ -103,13 +110,13 @@ function likeElement(val){
         evt.target.classList.toggle('element__like_on');
     })
 }
-//УДАЛИТЬ 
+//УДАЛИТЬ КАРТОЧКУ
 function deleteElement(val){
     val.querySelector('.element__trash').addEventListener('click', function(evt){
         evt.target.parentNode.remove();
     })
 }
-//ОТОБРАЗИТЬ КАРТОЧКУ
+//УВЕЛИЧИТЬ КАРТОЧКУ
 function openElement(val){
     val.querySelector('.element__photo').addEventListener('click', function(evt){
         popupImage.classList.add('popup_opened');
@@ -117,31 +124,10 @@ function openElement(val){
         popupCaption.textContent = evt.target.alt;
     })
 }
-    
-//ЗАКРЫТЬ ОТОБРАЖЕНИЕ КАРТОЧКИ
+//ЗАКРЫТЬ УВЕЛИЧЕННУЮ КАРТОЧКУ
 function closePopupImage(){
     popupImage.classList.remove('popup_opened');
 }
-
-
-
-
-//КАРТОЧКИ ИЗ МАССИВА
-initialCards.forEach(function(item){
-    const newElement = elementTemplate.cloneNode(true);
-    elementTemplate.querySelector('.element__photo').src = item.link;
-    elementTemplate.querySelector('.element__photo').alt = item.name;
-    elementTemplate.querySelector('.element__caption').textContent = item.name;
-    likeElement(newElement);
-    deleteElement(newElement);
-    openElement(newElement);
-    allElements.prepend(newElement);
-})
-
-
-
-
-
 
 
 
@@ -151,3 +137,4 @@ popupClose.addEventListener('click', closePopup);
 profileButton.addEventListener('click', openPopupNewcard);
 popupCloseNewcard.addEventListener('click', closePopupNewcard);
 popupCloseImage.addEventListener('click', closePopupImage);
+templateBox(initialCards);
