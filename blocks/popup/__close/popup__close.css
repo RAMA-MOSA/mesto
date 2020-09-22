@@ -5,11 +5,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     border: none;
-    width: 40.7px;
-    height: 40.7px;
+    width: 40px;
+    height: 40px;
     position: absolute;
     left: 100%;
-    top: -40.7px;
+    top: -40px;
     transition: opacity .3s;
 }
 .popup__close:hover{
