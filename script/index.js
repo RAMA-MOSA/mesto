@@ -50,7 +50,7 @@ const popupCloseImage = document.querySelector('.popup__close_image');
 const trash = document.querySelector('.element__trash');
 const elementTemplate = document.querySelector('#element').content;
 const allElements = document.querySelector('.elements__box');
-
+const allPopup = Array.from(document.querySelectorAll(".popup"));
 
 
 //ОТКРЫТЬ РЕДАКТОР ПРОФИЛЯ
@@ -138,6 +138,21 @@ function openedPopup(popup){
 function closedPopup(popup){
     popup.classList.remove('popup_opened');
 }
+//ЗАКРЫТЬ ПОПАП ПОСРЕДСТВОМ ESC
+allPopup.forEach(function(popup){
+    document.addEventListener('keydown', function(evt){
+        if(evt.key === 'Escape'){
+            closedPopup(popup);
+        };
+    });
+});
+//ЗАКРЫТЬ ПОПАП ПОСРЕДСТВОМ ОВЕРЛЕЙ
+allPopup.forEach(function (popup) {
+    popup.addEventListener("click", function (evt) {
+        if (evt.target.classList.contains("popup"))
+        closedPopup(popup);
+    });
+});
 
 
 

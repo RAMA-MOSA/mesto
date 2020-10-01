@@ -50,10 +50,12 @@
             <section class="popup">
                 <div class="popup__container">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form class="popup__form popup_form" name="form">
+                    <form class="popup__form popup_form" name="form" novalidate>
                       <fieldset class="popup__content">
-                        <input class="popup__item popup__item_name" name="name" type="text" placeholder="Имя" autocomplete="off" required>
-                        <input class="popup__item popup__item_description" name="description" type="text" placeholder="О себе" autocomplete="off" required>
+                        <input class="popup__item popup__item_name" id='name-input' name="name" type="text" placeholder="Имя" autocomplete="off" required minlength="2" maxlength="40">
+                        <span id='name-input-error' class='popup__item-error'></span>
+                        <input class="popup__item popup__item_description" id='description-input' name="description" type="text" placeholder="О себе" autocomplete="off" required minlength="2" maxlength="200">
+                        <span id='description-input-error' class='popup__item-error'></span>
                         <button class="popup__button" type="submit">Сохранить</button>
                       </fieldset>
                     </form>
@@ -63,10 +65,12 @@
             <section class="popup popup-newcard">
                 <div class="popup__container">
                     <h2 class="popup__title">Новое место</h2>
-                    <form class="popup__form popup-newcard_form" name="form">
+                    <form class="popup__form popup-newcard_form" name="form" novalidate>
                       <fieldset class="popup__content">
-                        <input class="popup__item popup__item_name-element" name="name-element" type="text" placeholder="Название" autocomplete="off" 	required>
-                        <input class="popup__item popup__item_link-element" name="link-element" type="url" placeholder="Ссылка на картинку" autocomplete="off" 	required>
+                        <input class="popup__item popup__item_name-element" id='name-element-input' name="name-element" type="text" placeholder="Название" autocomplete="off" required minlength="2" maxlength="30">
+                        <span id='name-element-input-error' class='popup__item-error'></span>
+                        <input class="popup__item popup__item_link-element" id='link-element-input' name="link-element" type="url" placeholder="Ссылка на картинку" autocomplete="off" 	required>
+                        <span id='link-element-input-error' class='popup__item-error'></span>
                         <button class="popup__button popup__button-newcard" type="submit">Создать</button>
                       </fieldset>
                     </form>
@@ -82,5 +86,6 @@
             </section>
     </div>
     <script src="./script/index.js"></script>
+    <script src="./script/validate.js"></script>
 </body>
 </html>
