@@ -76,7 +76,6 @@ function openPopupNewCard(){
     openPopup(popupNewCard);
     popupItemNameElement.value = '';
     popupItemLinkElement.value = '';
-    popupNewCardForm.addEventListener('submit', newCardSubmitHandler);
     popupButtonNewcard.classList.add('popup__button_disabled');
     popupButtonNewcard.disabled = true;
 }
@@ -136,22 +135,19 @@ function closePopupImage(){
 //ОТКРЫТЬ ПОПАП
 function openPopup(popup){
     popup.classList.add('popup_opened');
-    popup.addEventListener('click', openCloseEsc(popup));
+    document.addEventListener('keydown', closeByEsc);
 }
 //ЗАКРЫТЬ ПОПАП
 function closePopup(popup){
     popup.classList.remove('popup_opened');
-    popup.removeEventListener('click', openCloseEsc(popup));
+    document.removeEventListener('keydown', closeByEsc);
 }
 //ЗАКРЫТЬ ПОПАП ПОСРЕДСТВОМ ESC
-function openCloseEsc(popup){
-    allPopup.forEach(function(popup){
-        document.addEventListener('keydown', function(evt){
-            if(evt.key === 'Escape'){
-                closePopup(popup);
-            };
-        });
-    });
+function closeByEsc(evt){
+    if(evt.key === 'Escape'){
+        const popupTarget = document.querySelector('.popup_opened');
+        closePopup(popupTarget);
+    };
 };
 //ЗАКРЫТЬ ПОПАП ПОСРЕДСТВОМ ОВЕРЛЕЙ
 allPopup.forEach(function (popup) {
@@ -166,11 +162,12 @@ allPopup.forEach(function (popup) {
 //СОЗДАТЬ НАЧАЛЬНЫЕ КАРТОЧКИ ИЗ МАССИВА
 initialCards.forEach(function (item){
     const newElement = getCardElement(item);
-    renderCards(newElement, allElements);
+    allElements.append(newElement);
 });
 
 
 
+popupNewCardForm.addEventListener('submit', newCardSubmitHandler);
 popupForm.addEventListener('submit', formSubmitHandler);
 profileEdit.addEventListener('click', openProfilePopup);
 popupClose.addEventListener('click', closeProfilePopup);
