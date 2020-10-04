@@ -89,7 +89,6 @@ function newCardSubmitHandler(evt){
 }
 //ЗАКРЫТЬ ФОРМУ СОЗДАНИЯ НОВОЙ КАРТОЧКИ
 function closePopupNewCard(){
-    popupNewCardForm.removeEventListener('submit', newCardSubmitHandler);
     closePopup (popupNewCard);
 }
 //ЗАПОЛНИТЬ ДАННЫМИ НОВУЮ КАРТОЧКУ, ПОДКЛЮЧИТЬ СЛУШАТЕЛИ, ВЕРНУТЬ ГОТОВУЮ КАРТОЧКУ
