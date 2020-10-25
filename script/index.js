@@ -21,8 +21,6 @@ const popupImage = document.querySelector('.popup-image');
 const popupCloseNewCard = document.querySelector('.popup__close_newcard');
 const popupCloseImage = document.querySelector('.popup__close_image');
 const allPopup = Array.from(document.querySelectorAll(".popup"));
-const popupButtonNewcard = document.querySelector('.popup__button-newcard');
-const popupButtonProfile = document.querySelector('.popup__button-profile');
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 const config = {
     formSelector: '.popup__form',
