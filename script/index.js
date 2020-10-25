@@ -25,21 +25,13 @@ const popupButtonNewcard = document.querySelector('.popup__button-newcard');
 const popupButtonProfile = document.querySelector('.popup__button-profile');
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 const config = {
-    formSelector: '.popup__form', //ВСЕ ФОРМЫ
-    inputSelector: '.popup__item', //ВСЕ ПОЛЯ ВВОДА
-    submitButtonSelector: '.popup__button', //КНОПКА ОТПРАВКИ ФОРМЫ
+    formSelector: '.popup__form',
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__item_error-line',
     errorClass: 'popup__error_visible'
 }; 
-
-function openProfilePopup(){
-    openPopup(popupProfile);
-    popupItemName.value = profileName.textContent;
-    popupItemDescription.value = profileDescription.textContent;
-    popupButtonProfile.classList.remove('popup__button_disabled');
-    popupButtonProfile.disabled = false;
-}
 
 function formSubmitHandler(evt){
     evt.preventDefault();
@@ -48,26 +40,16 @@ function formSubmitHandler(evt){
     closePopup(popupProfile);
 }
 
-function closeProfilePopup(){
-    closePopup (popupProfile);
-}
-
 function openPopupNewCard(){
     openPopup(popupNewCard);
     popupItemNameElement.value = '';
     popupItemLinkElement.value = '';
-    popupButtonNewcard.classList.add('popup__button_disabled');
-    popupButtonNewcard.disabled = true;
 }
-//СОЗДАТЬ НОВУЮ КАРТОЧКУ, ЗАКРЫТЬ ФОРМУ
+
 function newCardSubmitHandler(evt){
     evt.preventDefault();
     const item = {name: popupItemNameElement.value, link: popupItemLinkElement.value};
     renderCards(item);
-    closePopup (popupNewCard);
-}
-
-function closePopupNewCard(){
     closePopup (popupNewCard);
 }
 
@@ -77,13 +59,9 @@ function renderCards(item){
     document.querySelector('.elements__box').prepend(cardElement);
 }
 
-function closePopupImage(){
-    closePopup (popupImage);
-}
-
 function openPopup(popup){
     popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closeByEsc);
+    document.addEventListener('keyup', closeByEsc);
 }
 
 function closePopup(popup){
@@ -121,10 +99,22 @@ const validator = (config, formList) => {
 validator(config, formList);
 popupNewCardForm.addEventListener('submit', newCardSubmitHandler);
 popupForm.addEventListener('submit', formSubmitHandler);
-profileEdit.addEventListener('click', openProfilePopup);
-popupClose.addEventListener('click', closeProfilePopup);
+profileEdit.addEventListener('click', () => {
+    openPopup(popupProfile);
+    popupItemName.value = profileName.textContent;
+    popupItemDescription.value = profileDescription.textContent;
+});
+popupClose.addEventListener('click', () => {
+    closePopup (popupProfile);
+});
 profileButton.addEventListener('click', openPopupNewCard);
-popupCloseNewCard.addEventListener('click', closePopupNewCard);
-popupCloseImage.addEventListener('click', closePopupImage);
+popupCloseNewCard.addEventListener('click', () => {
+    closePopup (popupNewCard);
+});
+popupCloseImage.addEventListener('click', (evt) => {
+    if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')){
+        closePopup (popupImage);
+    }
+});
 
 export{openPopup, popupImage, popupImg, popupCaption, config, formList};

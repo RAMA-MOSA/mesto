@@ -48,9 +48,10 @@ class Card{
     generateCard(){
         this._element = this._getTemplate();
         this._setEventListeners();
-        this._element.querySelector('.element__photo').src = this._photo;
-        this._element.querySelector('.element__photo').alt = this._alt;
         this._element.querySelector('.element__caption').textContent = this._caption;
+        const cardValue = this._element.querySelector('.element__photo');
+        cardValue.src = this._photo;
+        cardValue.alt = this._alt;
 
         return this._element;
     };

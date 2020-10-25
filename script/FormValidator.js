@@ -3,6 +3,7 @@ class FormValidator{
         this._formElement = formItem;
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
         this._inactiveButtonClass = config.inactiveButtonClass;
         this._inputErrorClass = config.inputErrorClass;
         this._errorClass = config.errorClass;
@@ -34,23 +35,26 @@ class FormValidator{
         return this._inputList.some((inputElement) => !inputElement.validity.valid);
     }
 
-    _toggleButtonState(buttonElement){
+    _disabledButton(){
+        this._buttonElement.classList.remove(this._inactiveButtonClass);
+        this._buttonElement.removeAttribute('disabled', true);
+    }
+
+    _toggleButtonState(){
         if (this._hasNotValidInput()){
-            buttonElement.classList.add(this._inactiveButtonClass);
-            buttonElement.setAttribute('disabled', true);
+            this._buttonElement.classList.add(this._inactiveButtonClass);
+            this._buttonElement.setAttribute('disabled', true);
         } else {
-            buttonElement.classList.remove(this._inactiveButtonClass);
-            buttonElement.removeAttribute('disabled', true);
+            this._disabledButton();
         }
     };
 
     _setEventListeners(){
-        const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-        this._toggleButtonState(buttonElement);
+        this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._checkInputValidity(inputElement);
-                this._toggleButtonState(buttonElement);
+                this._toggleButtonState();
             });
         });
     };
@@ -58,6 +62,7 @@ class FormValidator{
     enableValidation(){
             this._formElement.addEventListener('submit', (evt) => {
                 evt.preventDefault();
+                this._disabledButton();
             });
             this._setEventListeners();
     };
