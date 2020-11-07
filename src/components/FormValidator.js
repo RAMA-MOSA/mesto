@@ -1,4 +1,4 @@
-class FormValidator{
+export class FormValidator{
     constructor(config, formItem){
         this._formElement = formItem;
         this._inputSelector = config.inputSelector;
@@ -33,7 +33,7 @@ class FormValidator{
 
     _hasNotValidInput(){
         return this._inputList.some((inputElement) => !inputElement.validity.valid);
-    }
+    };
 
     _disabledButton(){
         this._buttonElement.classList.add(this._inactiveButtonClass);
@@ -66,6 +66,4 @@ class FormValidator{
             });
             this._setEventListeners();
     };
-}
-
-export {FormValidator};
+};

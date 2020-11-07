@@ -1,0 +1,41 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Проект создан в рамках обучающего курса профессиии веб-разработчик от \"ЯндексПрактикума\". \r ### Технологии, использованные при разработке проекта: \r * Flexbox-вёрстка \r * Позиционирование\r * Методология БЭМ \r * Адаптивная вёрстка  \r * JS  \r ### Планы по доработке проекта:\r * Добавить форму обратной связи \r ### Ссылка на проект: \r https://rama-mosa.github.io/mesto/",
+  "main": "./src/pages/index.js",
+  "scripts": {
+    "build": "rimraf dist && webpack --mode production",
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RAMA-MOSA/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RAMA-MOSA/mesto/issues"
+  },
+  "homepage": "https://github.com/RAMA-MOSA/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "autoprefixer": "^10.0.1",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^5.0.1",
+    "cssnano": "^4.1.10",
+    "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.2.1",
+    "postcss": "^8.1.6",
+    "postcss-loader": "^4.0.4",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  }
+}
