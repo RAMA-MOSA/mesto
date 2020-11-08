@@ -1,5 +1,5 @@
 import "./index.css";
-import {initialCards} from "../components/InitialCards.js";
+import {initialCards} from "../utils/InitialCards.js";
 import {Section} from "../components/Section.js";
 import {Card} from "../components/Card.js";
 import {FormValidator} from "../components/FormValidator.js";
@@ -47,7 +47,7 @@ const cardsList = new Section({
     renderer: (data) => {
         const card = createNewCard(data);
         const cardElement = card.generateCard();
-        cardsList.addItem(cardElement);
+        cardsList.addItem(cardElement, 'append');
     }
 },elementsBox
 );
@@ -57,7 +57,7 @@ const popupWithAddForm = new PopupWithForm(popupAddSelector, {
     submit: (data) => {
         const card = createNewCard(data);
         const cardElement = card.generateCard();
-        cardsList.addItem(cardElement);
+        cardsList.addItem(cardElement, 'prepend');
         popupWithAddForm.close();
     }
 });

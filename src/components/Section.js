@@ -11,7 +11,11 @@ export class Section{
         });
     };
     
-    addItem(element){
-        this._formSelector.prepend(element);
+    addItem(element, position = 'prepend'){
+        if (position === 'append'){
+            this._formSelector.append(element);
+        }else{
+            this._formSelector.prepend(element);
+        };
     };
 };
