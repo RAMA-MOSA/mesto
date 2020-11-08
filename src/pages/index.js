@@ -37,6 +37,7 @@ const createNewCard = (data) => {
     const card = new Card(data, cardSelector, {
         handleCardClick:(data) => {
             photoPopup.open(data);
+            photoPopup.setEventListeners();//если ставлю слушатель вне функции, то срабатывает он единожды и второй раз попап не закрывается
         }
     });
     return card;
@@ -71,6 +72,7 @@ const popupWithProfileForm = new PopupWithForm(popupProfileSelector, {
 
 profileButton.addEventListener('click', () => {
     popupWithAddForm.open();
+    popupWithAddForm.setEventListeners();
 });
 
 profileEdit.addEventListener('click', () => {
@@ -78,6 +80,7 @@ profileEdit.addEventListener('click', () => {
     popupItemName.value = userData.name;
     popupItemDescription.value = userData.info;
     popupWithProfileForm.open();
+    popupWithProfileForm.setEventListeners();
 });
 
 const validator = (config, formList) => {
