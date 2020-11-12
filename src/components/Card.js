@@ -86,7 +86,7 @@ export class Card{
         this._likeButton = this._element.querySelector('.element__like');
         this._likeCount = this._element.querySelector('.element__count');
         this._deleteButton = this._element.querySelector('.element__trash');
-        this._element.setAttribute('id', `${this._data._id}`);//////////////
+        this._element.setAttribute('id', `${this._data._id}`);
         this._cardCaption.textContent = this._data.name;
         this._cardValue.src = this._data.link;
         this._cardValue.alt = this._data.name;

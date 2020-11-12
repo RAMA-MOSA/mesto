@@ -11,7 +11,6 @@ import {Api} from "../components/Api.js";
 const cardSelector = '#element';
 const profileEdit = document.querySelector('.profile__edit');
 const profileButton = document.querySelector('.profile__button');
-const profileAvatar = document.querySelector('.profile__avatar');
 const avatarButton = document.querySelector('.profile__img-avatar');
 const popupProfile = document.querySelector('.popup-profile');
 const elementsBox = '.elements__box';
