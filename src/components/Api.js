@@ -4,7 +4,7 @@ export class Api {
       this._url = options.baseUrl;
     };
   
-    getInitialCards() {
+    getInitialData() {
       return Promise.all([this.getUserInfo(), this.getCards()]);
     };
   

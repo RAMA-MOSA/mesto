@@ -7,32 +7,25 @@ import {PopupWithForm} from "../components/PopupWithForm.js";
 import {PopupWithDeleteForm} from "../components/PopupWithDeleteForm.js";
 import {UserInfo} from "../components/UserInfo.js";
 import {Api} from "../components/Api.js";
-
-const cardSelector = '#element';
-const profileEdit = document.querySelector('.profile__edit');
-const profileButton = document.querySelector('.profile__button');
-const avatarButton = document.querySelector('.profile__img-avatar');
-const popupProfile = document.querySelector('.popup-profile');
-const elementsBox = '.elements__box';
-const nameSelector = '.profile__name'; 
-const infoSelector = '.profile__description';
-const avatarSelector = '.profile__avatar';
-const popupImageSelector ='.popup-image';
-const popupAddSelector = '.popup-newcard';
-const popupDeleteSelector = '.popup-delete';
-const popupProfileSelector = '.popup-profile';
-const popupAvatarSelector = '.popup-avatar';
-const formList = Array.from(document.querySelectorAll('.popup__form'));
-const popupItemName = popupProfile.querySelector('#name-input');
-const popupItemDescription = popupProfile.querySelector('#description-input');
-const config = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__item',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__item_error-line',
-    errorClass: 'popup__error_visible'
-}; 
+import {
+    cardSelector,
+    profileEdit,
+    profileButton,
+    avatarButton,
+    elementsBox,
+    nameSelector,
+    infoSelector,
+    avatarSelector,
+    popupImageSelector,
+    popupAddSelector,
+    popupDeleteSelector,
+    popupProfileSelector,
+    popupAvatarSelector,
+    formList,
+    popupItemName,
+    popupItemDescription,
+    config
+} from "../utils/constants.js";
 
 let ownerId = null;
 let tempCard = null;
@@ -59,7 +52,7 @@ const api = new Api({
     }
 }); 
 
-api.getInitialCards()
+api.getInitialData()
     .then((data) => {
         const [userData, cardData] = data;
         ownerId = userData._id;
@@ -127,13 +120,13 @@ const popupWithAddForm = new PopupWithForm(popupAddSelector, {
                 const card = createNewCard(res);
                 const cardElement = card.generateCard();
                 cardsList.addItem(cardElement, 'prepend');
+                popupWithAddForm.close();
             })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
                 popupWithAddForm.renderLoading(false);
-                popupWithAddForm.close();
             })
     }
 });
@@ -144,13 +137,13 @@ const popupWithProfileForm = new PopupWithForm(popupProfileSelector, {
         api.setUserInfo(data)
             .then((res) => {
                 userInfo.setUserInfo(res);
+                popupWithProfileForm.close();
             })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
                 popupWithProfileForm.renderLoading(false);
-                popupWithProfileForm.close();
             })
     }  
 });
@@ -161,13 +154,13 @@ const popupWithAvatarForm = new PopupWithForm(popupAvatarSelector, {
         api.setUserAvatar(data)
             .then((res) => {
                 userInfo.setUserAvatar(res);
+                popupWithAvatarForm.close();
             })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
                 popupWithAvatarForm.renderLoading(false);
-                popupWithAvatarForm.close();
             })
     }
 });
@@ -190,10 +183,11 @@ avatarButton.addEventListener('click', () => {
     popupWithAvatarForm.setEventListeners();
 });
 
-const validator = (config, formList) => {
-    formList.forEach((item) => {
-        const newForm = new FormValidator(config, item);
-        newForm.enableValidation();
-    })
+const validator = (form) => {
+    const newForm = new FormValidator(config, form);
+    newForm.enableValidation();
 };
-validator(config, formList);
+
+formList.forEach(form => {
+    validator(form);
+});
