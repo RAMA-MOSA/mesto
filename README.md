@@ -22,4 +22,4 @@
 * Webpack
 
 ## Ссылка на проект: 
-https://rama-mosa.github.io/mesto/
+https://rama-mosa.github.io/mesto/index.html
