@@ -3,7 +3,7 @@
 ## Описание:
  "Mesto" - это интерактивная страница, где пользователи могут делиться фотографиями. В работе применены расширенные возможности HTML и CSS, проверка данных форм, git, Webpack.
 
-[Проектная работа на GitHub Pages](https://rama-mosa.github.io/mesto/)
+[Проектная работа на GitHub Pages](https://rama-mosa.github.io/mesto/index.html)
 
 ## Функционал:
 * Добавление и удаление фотографии
@@ -22,3 +22,12 @@
 * Git
 * JavaScript
 * Webpack
+
+## Инструкция по установке: 
+```
+git clone https://github.com/RAMA-MOSA/mesto.git
+cd mesto
+npm i webpack --save-dev
+npm run build
+npm run dev
+```
